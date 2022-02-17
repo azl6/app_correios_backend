@@ -18,10 +18,9 @@ public class Estado implements Serializable {
     private String nome;
     private List<Cidade> cidades = new ArrayList<>();
 
-    public Estado(Integer id, String nome, List<Cidade> cidades) {
+    public Estado(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.cidades = cidades;
     }
 
     @Override

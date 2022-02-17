@@ -19,11 +19,10 @@ public class Cliente implements Serializable {
     private String email;
     private List<Endereco> enderecos = new ArrayList<>();
 
-    public Cliente(Integer id, String nome, String email, List<Endereco> enderecos) {
+    public Cliente(Integer id, String nome, String email) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.enderecos = enderecos;
     }
 
     @Override

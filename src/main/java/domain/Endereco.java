@@ -14,14 +14,16 @@ public class Endereco implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Cliente cliente;
     private Estado estado;
     private Cidade cidade;
     private String bairro;
     private String rua;
     private String numero;
 
-    public Endereco(Integer id, Estado estado, Cidade cidade, String bairro, String rua, String numero) {
+    public Endereco(Integer id, Cliente cliente, Estado estado, Cidade cidade, String bairro, String rua, String numero) {
         this.id = id;
+        this.cliente = cliente;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
@@ -40,6 +42,14 @@ public class Endereco implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Integer getId() {
