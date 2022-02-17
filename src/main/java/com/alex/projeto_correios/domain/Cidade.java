@@ -1,4 +1,4 @@
-package domain;
+package com.alex.projeto_correios.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,12 +14,11 @@ public class Cidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private Estado estado;
 
-    public Cidade(Integer id, String nome, Estado estado) {
+
+    public Cidade(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.estado = estado;
     }
 
     @Override
@@ -51,11 +50,4 @@ public class Cidade implements Serializable {
         this.nome = nome;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
 }

@@ -1,11 +1,8 @@
-package domain;
+package com.alex.projeto_correios.domain;
 
-import domain.enums.Status;
+import com.alex.projeto_correios.domain.enums.Status;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
@@ -16,6 +13,9 @@ public class Encomenda implements Serializable {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
+
+        @ManyToOne
+        @JoinColumn(name = "endereco_id")
         private Endereco enderecoDeEntrega;
         private Date dataDeEnvio;
         private Date previsaoDeEntrega;

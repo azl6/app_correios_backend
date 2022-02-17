@@ -1,6 +1,6 @@
-package repositories;
+package com.alex.projeto_correios.repositories;
 
-import domain.Estado;
+import com.alex.projeto_correios.domain.Estado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

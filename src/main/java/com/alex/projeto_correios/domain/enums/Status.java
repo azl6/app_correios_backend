@@ -1,4 +1,4 @@
-package domain.enums;
+package com.alex.projeto_correios.domain.enums;
 
 public enum Status {
 

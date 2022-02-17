@@ -1,18 +1,21 @@
 package com.alex.projeto_correios;
 
-import domain.*;
-import domain.enums.Status;
+import com.alex.projeto_correios.domain.*;
+import com.alex.projeto_correios.repositories.*;
+import com.alex.projeto_correios.domain.enums.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import repositories.*;
+;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 
+
 @SpringBootApplication
 public class ProjetoCorreiosApplication implements CommandLineRunner {
+
 
 	@Autowired
 	public CidadeRepository cidadeRepository;
@@ -29,6 +32,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 	@Autowired
 	public EncomendaRepository encomendaRepository;
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoCorreiosApplication.class, args);
 	}
@@ -41,9 +45,9 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		Estado sp = new Estado(null, "São Paulo");
 		Estado mg = new Estado(null, "Minas Gerais");
 
-		Cidade cruzeiro = new Cidade(null, "Cruzeiro", sp);
-		Cidade campinas = new Cidade(null, "Campinas", sp);
-		Cidade itajuba = new Cidade(null, "Itajubá", mg);
+		Cidade cruzeiro = new Cidade(null, "Cruzeiro");
+		Cidade campinas = new Cidade(null, "Campinas");
+		Cidade itajuba = new Cidade(null, "Itajubá");
 
 		sp.setCidades(Arrays.asList(cruzeiro, campinas));
 		mg.setCidades(Arrays.asList(itajuba));
@@ -61,11 +65,11 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 				"BRX674032",
 				Status.ENTREGUE);
 
-		estadoRepository.saveAll(Arrays.asList(sp, mg));
+		//estadoRepository.saveAll(Arrays.asList(sp, mg));
 		cidadeRepository.saveAll(Arrays.asList(itajuba, campinas, cruzeiro));
-		clienteRepository.saveAll(Arrays.asList(alex));
-		enderecoRepository.saveAll(Arrays.asList(endereco1));
-		encomendaRepository.saveAll(Arrays.asList(encomenda1));
+		//clienteRepository.saveAll(Arrays.asList(alex));
+		//enderecoRepository.saveAll(Arrays.asList(endereco1));
+		//encomendaRepository.saveAll(Arrays.asList(encomenda1));
 
 	}
 }

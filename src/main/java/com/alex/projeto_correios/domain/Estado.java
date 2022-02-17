@@ -1,9 +1,6 @@
-package domain;
+package com.alex.projeto_correios.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +13,8 @@ public class Estado implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+
+    @OneToMany(cascade=CascadeType.ALL)
     private List<Cidade> cidades = new ArrayList<>();
 
     public Estado(Integer id, String nome) {

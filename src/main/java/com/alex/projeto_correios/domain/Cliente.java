@@ -1,9 +1,6 @@
-package domain;
+package com.alex.projeto_correios.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +14,8 @@ public class Cliente implements Serializable {
     private Integer id;
     private String nome;
     private String email;
+
+    @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
     public Cliente(Integer id, String nome, String email) {
