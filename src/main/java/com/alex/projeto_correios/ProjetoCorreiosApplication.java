@@ -65,7 +65,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 				"BRX674032",
 				Status.ENTREGUE);
 
-		//estadoRepository.saveAll(Arrays.asList(sp, mg));
+		estadoRepository.saveAll(Arrays.asList(sp, mg));
 		cidadeRepository.saveAll(Arrays.asList(itajuba, campinas, cruzeiro));
 		//clienteRepository.saveAll(Arrays.asList(alex));
 		//enderecoRepository.saveAll(Arrays.asList(endereco1));

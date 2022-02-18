@@ -1,9 +1,6 @@
 package com.alex.projeto_correios.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,11 +12,17 @@ public class Cidade implements Serializable {
     private Integer id;
     private String nome;
 
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
+
 
     public Cidade(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
+
+    public Cidade() {}
 
     @Override
     public boolean equals(Object o) {

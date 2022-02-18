@@ -14,13 +14,15 @@ public class Estado implements Serializable {
     private Integer id;
     private String nome;
 
-    @OneToMany(cascade=CascadeType.ALL)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "estado")
     private List<Cidade> cidades = new ArrayList<>();
 
     public Estado(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
     }
+
+    public Estado() {}
 
     @Override
     public boolean equals(Object o) {
