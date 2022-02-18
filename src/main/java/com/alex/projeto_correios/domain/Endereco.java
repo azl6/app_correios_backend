@@ -15,13 +15,13 @@ public class Endereco implements Serializable {
     @ManyToOne
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    private Estado estado;
-    private Cidade cidade;
+    private String estado;
+    private String cidade;
     private String bairro;
     private String rua;
     private String numero;
 
-    public Endereco(Integer id, Cliente cliente, Estado estado, Cidade cidade, String bairro, String rua, String numero) {
+    public Endereco(Integer id, Cliente cliente, String estado, String cidade, String bairro, String rua, String numero) {
         this.id = id;
         this.cliente = cliente;
         this.estado = estado;
@@ -60,19 +60,19 @@ public class Endereco implements Serializable {
         this.id = id;
     }
 
-    public Estado getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public Cidade getCidade() {
+    public String getCidade() {
         return cidade;
     }
 
-    public void setCidade(Cidade cidade) {
+    public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
