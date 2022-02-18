@@ -31,6 +31,8 @@ public class Endereco implements Serializable {
         this.numero = numero;
     }
 
+    public Endereco(){}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

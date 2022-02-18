@@ -31,6 +31,8 @@ public class Encomenda implements Serializable {
                 this.status = status;
         }
 
+        public Encomenda(){}
+
         @Override
         public boolean equals(Object o) {
                 if (this == o) return true;

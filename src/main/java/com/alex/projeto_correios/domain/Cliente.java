@@ -24,6 +24,8 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
+    public Cliente(){}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
