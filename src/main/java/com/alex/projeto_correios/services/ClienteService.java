@@ -11,4 +11,14 @@ import java.util.Optional;
 
 @Service
 public class ClienteService {
+
+    final ClienteRepository clienteRepository;
+
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
+
+    public Cliente update(Integer id, Cliente obj){
+        //IMPLEMENTAR LOGICA DO UPDATE
+    }
 }
