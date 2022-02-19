@@ -71,5 +71,8 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		enderecoRepository.saveAll(Arrays.asList(endereco1));
 		encomendaRepository.saveAll(Arrays.asList(encomenda1));
 
+
+	 
+
 	}
 }
