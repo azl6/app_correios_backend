@@ -72,7 +72,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		encomendaRepository.saveAll(Arrays.asList(encomenda1));
 
 
-	 
+
 
 	}
 }

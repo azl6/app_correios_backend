@@ -26,4 +26,19 @@ public class EncomendaService {
     public List<Encomenda> findAll(){
         return repo.findAll();
     }
+
+    public Encomenda findById(Integer id){
+        Optional<Encomenda> obj = repo.findById(id);
+
+        return obj.orElseThrow(() -> new ObjectNotFoundException(1, "Não encontrado"));
+    }
+
+    public Encomenda insert(Encomenda obj){
+        Optional<Encomenda> opt = repo.findById(obj.getId());
+
+        if(opt.isPresent())
+            throw new IllegalArgumentException("Código já existente na base de dados");
+        else
+            return repo.save(obj);
+    }
 }
