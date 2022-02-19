@@ -1,5 +1,7 @@
 package com.alex.projeto_correios.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class Cliente implements Serializable {
     private String nome;
     private String email;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
