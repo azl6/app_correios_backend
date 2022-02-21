@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/clientes")
 public class ClienteController {
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Cliente obj){
-
-    }
+//    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+//    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Cliente obj){
+//
+//    }
 }
