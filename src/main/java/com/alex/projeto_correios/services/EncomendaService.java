@@ -2,6 +2,7 @@ package com.alex.projeto_correios.services;
 
 import com.alex.projeto_correios.domain.Cliente;
 import com.alex.projeto_correios.domain.Encomenda;
+import com.alex.projeto_correios.domain.enums.Status;
 import com.alex.projeto_correios.repositories.ClienteRepository;
 import com.alex.projeto_correios.repositories.EncomendaRepository;
 import org.hibernate.ObjectNotFoundException;
@@ -40,5 +41,16 @@ public class EncomendaService {
             throw new IllegalArgumentException("Código já existente na base de dados");
         else
             return repo.save(obj);
+    }
+
+    public Encomenda updateStatus(Integer id, Status status){
+        Encomenda old = this.findById(id);
+
+        if (old == null)
+            throw new ObjectNotFoundException(1, "Não encontrado");
+
+        old.setStatus(status);
+        return repo.save(old);
+
     }
 }

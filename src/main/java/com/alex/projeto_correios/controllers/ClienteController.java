@@ -16,7 +16,7 @@ public class ClienteController {
     private ClienteService service;
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public ResponseEntity<?> update(@PathVariable Integer id, @RequestBody Cliente obj){
+    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Cliente obj){
 
     service.update(id, obj);
 

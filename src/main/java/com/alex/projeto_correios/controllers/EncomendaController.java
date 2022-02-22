@@ -45,4 +45,13 @@ public class EncomendaController {
         obj = service.insert(obj);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    //arrumar
+    @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
+    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Encomenda obj){
+
+        service.update(id, obj);
+
+        return ResponseEntity.noContent().build();
+    }
 }
