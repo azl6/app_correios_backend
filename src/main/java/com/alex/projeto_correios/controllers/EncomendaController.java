@@ -33,7 +33,7 @@ public class EncomendaController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Encomenda> findByCodigo(@PathVariable Integer id){
+    public ResponseEntity<Encomenda> findById(@PathVariable Integer id){
 
         Encomenda obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
