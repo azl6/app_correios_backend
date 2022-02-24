@@ -54,20 +54,23 @@ public class EncomendaService {
 
         switch (status){
             case "ENVIADO":
+                System.out.println("\ncaiu no ENVIADO!\n");
+                System.out.println("Status: " + status);
                 old.setStatus(Status.ENVIADO);
                 break;
             case "PENDENTE_DE_ENVIO":
+                System.out.println("\ncaiu no PENDENTE_DE_ENVIO!\n");
+                System.out.println("Status: " + status);
                 old.setStatus(Status.PENDENTE_DE_ENVIO);
                 break;
             case "ENTREGUE":
+                System.out.println("\ncaiu no ENTREGUE!\n");
+                System.out.println("Status: " + status);
                 old.setStatus(Status.ENTREGUE);
                 break;
             default:
                 throw new IllegalArgumentException("Status não existente, Status: " + status);
         }
-
-        old.setStatus(Status.ENVIADO);
         return repo.save(old);
-
     }
 }
