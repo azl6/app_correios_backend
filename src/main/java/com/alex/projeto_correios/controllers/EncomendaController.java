@@ -2,6 +2,7 @@ package com.alex.projeto_correios.controllers;
 
 import com.alex.projeto_correios.domain.Cliente;
 import com.alex.projeto_correios.domain.Encomenda;
+import com.alex.projeto_correios.domain.enums.Status;
 import com.alex.projeto_correios.services.ClienteService;
 import com.alex.projeto_correios.services.EncomendaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,9 +49,9 @@ public class EncomendaController {
 
     //arrumar
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-    public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Encomenda obj){
+    public ResponseEntity<Void> updateStatus(@PathVariable Integer id, @RequestBody String status){
 
-        service.update(id, obj);
+        service.updateStatus(id, status);
 
         return ResponseEntity.noContent().build();
     }

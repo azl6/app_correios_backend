@@ -1,6 +1,8 @@
 package com.alex.projeto_correios.domain.enums;
 
-public enum Status {
+import java.io.Serializable;
+
+public enum Status implements Serializable {
 
     ENVIADO("Enviado"),
     ENTREGUE("Entregue"),

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -43,13 +44,29 @@ public class EncomendaService {
             return repo.save(obj);
     }
 
-    public Encomenda updateStatus(Integer id, Status status){
+    public Encomenda updateStatus(Integer id, String status){
+        status = status.toUpperCase();
+        status = status.substring(18, status.length()-4);
         Encomenda old = this.findById(id);
 
         if (old == null)
             throw new ObjectNotFoundException(1, "Não encontrado");
 
-        old.setStatus(status);
+        switch (status){
+            case "ENVIADO":
+                old.setStatus(Status.ENVIADO);
+                break;
+            case "PENDENTE_DE_ENVIO":
+                old.setStatus(Status.PENDENTE_DE_ENVIO);
+                break;
+            case "ENTREGUE":
+                old.setStatus(Status.ENTREGUE);
+                break;
+            default:
+                throw new IllegalArgumentException("Status não existente, Status: " + status);
+        }
+
+        old.setStatus(Status.ENVIADO);
         return repo.save(old);
 
     }
