@@ -19,6 +19,9 @@ public class EncomendaService {
     @Autowired
     private EncomendaRepository repo;
 
+    @Autowired
+    private EmailService emailService;
+
     public Encomenda findByCodigo(String codigo){
         Optional<Encomenda> obj = repo.findByCodigo(codigo);
 
@@ -65,6 +68,8 @@ public class EncomendaService {
             default:
                 throw new IllegalArgumentException("Status não existente, Status: " + status);
         }
+
+        //emailService.sendStatusChangedEmail();
         return repo.save(old);
     }
 }

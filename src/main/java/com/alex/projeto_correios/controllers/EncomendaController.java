@@ -19,6 +19,9 @@ public class EncomendaController {
     @Autowired
     private EncomendaService service;
 
+    @Autowired
+    private ClienteService clienteService;
+
 //    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 //    public ResponseEntity<Encomenda> findByCodigo(@PathVariable String codigo){
 //
@@ -50,6 +53,10 @@ public class EncomendaController {
     //arrumar
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public ResponseEntity<Void> updateStatus(@PathVariable Integer id, @RequestBody String status){
+
+        //continuar daqui
+        List<Cliente> clienteList = clienteService.findAll();
+
 
         service.updateStatus(id, status);
 
