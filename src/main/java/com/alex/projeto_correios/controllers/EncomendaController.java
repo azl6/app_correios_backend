@@ -54,11 +54,12 @@ public class EncomendaController {
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public ResponseEntity<Void> updateStatus(@PathVariable Integer id, @RequestBody String status){
 
-        //continuar daqui
-        List<Cliente> clienteList = clienteService.findAll();
+        Encomenda encomenda = service.findById(id);
 
 
+        //criar método separado para fazer o envio de email
         service.updateStatus(id, status);
+        service.sendStatusEmail(encomenda, encomenda.getCliente());
 
         return ResponseEntity.noContent().build();
     }

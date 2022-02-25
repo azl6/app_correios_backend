@@ -17,6 +17,9 @@ public class Cliente implements Serializable {
     private String nome;
     private String email;
 
+    @OneToMany(mappedBy = "cliente")
+    private List<Encomenda> encomenda = new ArrayList<>();
+
     @JsonIgnore
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();

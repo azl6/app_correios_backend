@@ -1,6 +1,7 @@
 package com.alex.projeto_correios.domain;
 
 import com.alex.projeto_correios.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,6 +22,11 @@ public class Encomenda implements Serializable {
         private Date previsaoDeEntrega;
         private String codigo;
         private Status status = Status.PENDENTE_DE_ENVIO;
+
+        @JsonIgnore
+        @ManyToOne
+        @JoinColumn(name = "cliente_id")
+        private Cliente cliente;
 
         public Encomenda(Integer id, Endereco enderecoDeEntrega, Date dataDeEnvio, Date previsaoDeEntrega, String codigo, Status status) {
                 this.id = id;
@@ -92,5 +98,13 @@ public class Encomenda implements Serializable {
 
         public void setStatus(Status status) {
                 this.status = status;
+        }
+
+        public Cliente getCliente() {
+                return cliente;
+        }
+
+        public void setCliente(Cliente cliente) {
+                this.cliente = cliente;
         }
 }

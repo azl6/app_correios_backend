@@ -12,8 +12,9 @@ public abstract class AbstractEmailService implements EmailService {
     @Value("${default.sender}")
     private String sender;
 
-    public void sendStatusChangedEmail(Cliente obj){
-       SimpleMailMessage sm = prepareSimpleMailMessageForCliente(Cliente obj);
+    public void sendStatusChangedEmail(Cliente cli, Encomenda enc){
+       SimpleMailMessage sm = this.prepareSimpleMailMessageForCliente(cli, enc);
+       sendEmail(sm);
     }
 
     protected SimpleMailMessage prepareSimpleMailMessageForCliente(Cliente obj, Encomenda enc){
@@ -24,7 +25,7 @@ public abstract class AbstractEmailService implements EmailService {
         sm.setSentDate(new Date(System.currentTimeMillis()));
         sm.setText("Saudações, " + obj.getNome() +
                 "!\n\nAtualizamos o status do seu pedido! " +
-                "O status atual do seu pedido foi modificado para: "
+                "O status atual do seu pedido " + enc.getCodigo() + " foi modificado para: "
                 + enc.getStatus() + ".\n\nTrabalhamos para que receba as suas encomendas " +
                 "com uma rapidez líder no mercado!\n\nAbraços,\n\nEquipe Correios");
 

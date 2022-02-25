@@ -63,7 +63,9 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 				sdf.parse("22-01-2021"),
 				sdf.parse("30-01-2021"),
 				"BRX674032",
-				Status.ENTREGUE);
+				Status.PENDENTE_DE_ENVIO);
+
+		encomenda1.setCliente(alex);
 
 		estadoRepository.saveAll(Arrays.asList(sp, mg));
 		cidadeRepository.saveAll(Arrays.asList(itajuba, campinas, cruzeiro));

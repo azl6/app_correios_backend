@@ -12,14 +12,14 @@ public class Endereco implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
     private String estado;
     private String cidade;
     private String bairro;
     private String rua;
     private String numero;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     public Endereco(Integer id, Cliente cliente, String estado, String cidade, String bairro, String rua, String numero) {
         this.id = id;

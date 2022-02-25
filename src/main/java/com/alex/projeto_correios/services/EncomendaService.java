@@ -68,8 +68,10 @@ public class EncomendaService {
             default:
                 throw new IllegalArgumentException("Status não existente, Status: " + status);
         }
-
-        //emailService.sendStatusChangedEmail();
         return repo.save(old);
+    }
+
+    public void sendStatusEmail(Encomenda encomenda, Cliente cliente){
+        emailService.sendStatusChangedEmail(cliente, encomenda);
     }
 }
