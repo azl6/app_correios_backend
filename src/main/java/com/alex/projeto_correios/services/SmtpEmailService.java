@@ -2,19 +2,23 @@ package com.alex.projeto_correios.services;
 
 import com.alex.projeto_correios.domain.Cliente;
 import com.alex.projeto_correios.domain.Encomenda;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.util.Date;
 
-public abstract class AbstractEmailService implements EmailService {
+public abstract class SmtpEmailService implements EmailService {
 
     @Value("${default.sender}")
     private String sender;
 
+    @Autowired
+    private MailSender mailSender;
     public void sendStatusChangedEmail(Cliente cli, Encomenda enc){
        SimpleMailMessage sm = this.prepareSimpleMailMessageForCliente(cli, enc);
-       sendEmail(sm);
+       mailSender.send(sm);
     }
 
     protected SimpleMailMessage prepareSimpleMailMessageForCliente(Cliente obj, Encomenda enc){

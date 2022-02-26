@@ -52,7 +52,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		sp.setCidades(Arrays.asList(cruzeiro, campinas));
 		mg.setCidades(Arrays.asList(itajuba));
 
-		Cliente alex = new Cliente(null, "Alex Silva Rodrigues", "alex@gmail.com");
+		Cliente alex = new Cliente(null, "Alex Silva Rodrigues", "alex.rodrigues23997@gmail.com");
 
 		Endereco endereco1 = new Endereco(null, alex, mg.getNome(), itajuba.getNome(), "Centro", "Rua Nova", "399");
 		alex.setEnderecos(Arrays.asList(endereco1));
