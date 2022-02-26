@@ -1,8 +1,9 @@
-package com.alex.projeto_correios;
+package com.alex.projeto_correios.config;
 
 import com.alex.projeto_correios.services.EmailService;
 import com.alex.projeto_correios.services.MockEmailService;
 import com.alex.projeto_correios.services.SmtpEmailService;
+import com.alex.projeto_correios.utils.CodeGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,4 +20,11 @@ public class Config {
             }
         };
     }
+
+    @Bean
+    public CodeGenerator codeGenerator(){
+        return new CodeGenerator();
+    }
+
+
 }

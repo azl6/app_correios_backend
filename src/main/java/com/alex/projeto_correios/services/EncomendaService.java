@@ -5,6 +5,7 @@ import com.alex.projeto_correios.domain.Encomenda;
 import com.alex.projeto_correios.domain.enums.Status;
 import com.alex.projeto_correios.repositories.ClienteRepository;
 import com.alex.projeto_correios.repositories.EncomendaRepository;
+import com.alex.projeto_correios.utils.CodeGenerator;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

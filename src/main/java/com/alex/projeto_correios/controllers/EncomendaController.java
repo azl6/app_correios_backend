@@ -5,6 +5,7 @@ import com.alex.projeto_correios.domain.Encomenda;
 import com.alex.projeto_correios.domain.enums.Status;
 import com.alex.projeto_correios.services.ClienteService;
 import com.alex.projeto_correios.services.EncomendaService;
+import com.alex.projeto_correios.utils.CodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,9 @@ public class EncomendaController {
     @Autowired
     private ClienteService clienteService;
 
+    @Autowired
+    private CodeGenerator codeGenerator;
+
 //    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 //    public ResponseEntity<Encomenda> findByCodigo(@PathVariable String codigo){
 //
@@ -33,6 +37,7 @@ public class EncomendaController {
     public ResponseEntity<List<Encomenda>> findAll(){
 
         List<Encomenda> obj = service.findAll();
+        System.out.println(codeGenerator.newCode());
         return ResponseEntity.ok().body(obj);
     }
 
