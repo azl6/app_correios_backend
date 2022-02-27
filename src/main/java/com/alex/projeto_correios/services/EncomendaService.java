@@ -40,7 +40,7 @@ public class EncomendaService {
     }
 
     public Encomenda insert(Encomenda obj){
-        Optional<Encomenda> opt = repo.findById(obj.getId());
+        Optional<Encomenda> opt = repo.findByCodigo(obj.getCodigo());
 
         if(opt.isPresent())
             throw new IllegalArgumentException("Código já existente na base de dados");

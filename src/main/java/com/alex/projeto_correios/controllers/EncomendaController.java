@@ -26,12 +26,12 @@ public class EncomendaController {
     @Autowired
     private CodeGenerator codeGenerator;
 
-//    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
-//    public ResponseEntity<Encomenda> findByCodigo(@PathVariable String codigo){
-//
-//        Encomenda obj = service.findByCodigo(codigo);
-//        return ResponseEntity.ok().body(obj);
-//    }
+    @RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
+    public ResponseEntity<Encomenda> findByCodigo(@PathVariable String codigo){
+
+        Encomenda obj = service.findByCodigo(codigo);
+        return ResponseEntity.ok().body(obj);
+    }
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Encomenda>> findAll(){
@@ -41,12 +41,12 @@ public class EncomendaController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Encomenda> findById(@PathVariable Integer id){
-
-        Encomenda obj = service.findById(id);
-        return ResponseEntity.ok().body(obj);
-    }
+//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<Encomenda> findById(@PathVariable Integer id){
+//
+//        Encomenda obj = service.findById(id);
+//        return ResponseEntity.ok().body(obj);
+//    }
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Encomenda> insert(@RequestBody Encomenda obj){

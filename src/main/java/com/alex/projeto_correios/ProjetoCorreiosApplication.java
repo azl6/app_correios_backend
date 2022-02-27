@@ -3,6 +3,8 @@ package com.alex.projeto_correios;
 import com.alex.projeto_correios.domain.*;
 import com.alex.projeto_correios.repositories.*;
 import com.alex.projeto_correios.domain.enums.Status;
+import com.alex.projeto_correios.utils.CodeGenerator;
+import com.alex.projeto_correios.utils.EncomendaIdGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,6 +34,9 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 	@Autowired
 	public EncomendaRepository encomendaRepository;
 
+	@Autowired
+	public CodeGenerator codeGenerator;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoCorreiosApplication.class, args);
@@ -58,11 +63,10 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		alex.setEnderecos(Arrays.asList(endereco1));
 
 		Encomenda encomenda1 = new Encomenda(
-				null,
+				codeGenerator.newCode(),
 				endereco1,
 				sdf.parse("22-01-2021"),
 				sdf.parse("30-01-2021"),
-				"BRX674032",
 				Status.PENDENTE_DE_ENVIO);
 
 		encomenda1.setCliente(alex);

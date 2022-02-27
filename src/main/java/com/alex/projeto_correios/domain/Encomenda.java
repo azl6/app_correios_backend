@@ -2,6 +2,7 @@ package com.alex.projeto_correios.domain;
 
 import com.alex.projeto_correios.domain.enums.Status;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,15 +13,17 @@ import java.util.Objects;
 public class Encomenda implements Serializable {
 
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+        @GenericGenerator(name = "encomenda_id", strategy = "com.alex.projeto_correios.utils.EncomendaIdGenerator")
+        @GeneratedValue(generator = "encomenda_id")
+        @Column(name="codigo")
+        private String codigo;
 
         @ManyToOne
         @JoinColumn(name = "endereco_id")
         private Endereco enderecoDeEntrega;
         private Date dataDeEnvio;
         private Date previsaoDeEntrega;
-        private String codigo;
+        //private String codigo;
         private Status status = Status.PENDENTE_DE_ENVIO;
 
         @JsonIgnore
@@ -28,12 +31,11 @@ public class Encomenda implements Serializable {
         @JoinColumn(name = "cliente_id")
         private Cliente cliente;
 
-        public Encomenda(Integer id, Endereco enderecoDeEntrega, Date dataDeEnvio, Date previsaoDeEntrega, String codigo, Status status) {
-                this.id = id;
+        public Encomenda(String codigo, Endereco enderecoDeEntrega, Date dataDeEnvio, Date previsaoDeEntrega, Status status) {
+                this.codigo = codigo;
                 this.enderecoDeEntrega = enderecoDeEntrega;
                 this.dataDeEnvio = dataDeEnvio;
                 this.previsaoDeEntrega = previsaoDeEntrega;
-                this.codigo = codigo;
                 this.status = status;
         }
 
@@ -44,20 +46,12 @@ public class Encomenda implements Serializable {
                 if (this == o) return true;
                 if (o == null || getClass() != o.getClass()) return false;
                 Encomenda encomenda = (Encomenda) o;
-                return id.equals(encomenda.id);
+                return codigo.equals(encomenda.codigo);
         }
 
         @Override
         public int hashCode() {
-                return Objects.hash(id);
-        }
-
-        public Integer getId() {
-                return id;
-        }
-
-        public void setId(Integer id) {
-                this.id = id;
+                return Objects.hash(codigo);
         }
 
         public Endereco getEnderecoDeEntrega() {
