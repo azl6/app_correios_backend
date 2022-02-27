@@ -15,7 +15,6 @@ public class Encomenda implements Serializable {
         @Id
         @GenericGenerator(name = "encomenda_id", strategy = "com.alex.projeto_correios.utils.EncomendaIdGenerator")
         @GeneratedValue(generator = "encomenda_id")
-        @Column(name="codigo")
         private String codigo;
 
         @ManyToOne
