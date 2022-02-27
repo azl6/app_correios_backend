@@ -14,6 +14,6 @@ public class EncomendaIdGenerator implements IdentifierGenerator {
 
     @Override
     public Serializable generate(SharedSessionContractImplementor sharedSessionContractImplementor, Object o) throws HibernateException {
-        return codeGenerator.newCode();
+        return "BR" + codeGenerator.newCode();
     }
 }
