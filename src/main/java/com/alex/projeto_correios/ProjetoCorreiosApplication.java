@@ -1,6 +1,7 @@
 package com.alex.projeto_correios;
 
 import com.alex.projeto_correios.domain.*;
+import com.alex.projeto_correios.domain.enums.Perfil;
 import com.alex.projeto_correios.repositories.*;
 import com.alex.projeto_correios.domain.enums.Status;
 import com.alex.projeto_correios.utils.CodeGenerator;
@@ -62,6 +63,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		mg.setCidades(Arrays.asList(itajuba));
 
 		Cliente alex = new Cliente(null, "Alex Silva Rodrigues", "alex.rodrigues23997@gmail.com", pe.encode("123"));
+		alex.addPerfil(Perfil.ADMIN);
 
 		Endereco endereco1 = new Endereco(null, alex, mg.getNome(), itajuba.getNome(), "Centro", "Rua Nova", "399");
 		alex.setEnderecos(Arrays.asList(endereco1));
