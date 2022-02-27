@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 ;
 
 import java.text.SimpleDateFormat;
@@ -37,6 +38,9 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 	@Autowired
 	public CodeGenerator codeGenerator;
 
+	@Autowired
+	private BCryptPasswordEncoder pe;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoCorreiosApplication.class, args);
@@ -57,7 +61,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		sp.setCidades(Arrays.asList(cruzeiro, campinas));
 		mg.setCidades(Arrays.asList(itajuba));
 
-		Cliente alex = new Cliente(null, "Alex Silva Rodrigues", "alex.rodrigues23997@gmail.com");
+		Cliente alex = new Cliente(null, "Alex Silva Rodrigues", "alex.rodrigues23997@gmail.com", pe.encode("123"));
 
 		Endereco endereco1 = new Endereco(null, alex, mg.getNome(), itajuba.getNome(), "Centro", "Rua Nova", "399");
 		alex.setEnderecos(Arrays.asList(endereco1));

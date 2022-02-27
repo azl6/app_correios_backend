@@ -8,6 +8,7 @@ import com.alex.projeto_correios.utils.EncomendaIdGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class Config {
@@ -30,6 +31,11 @@ public class Config {
     @Bean
     public EncomendaIdGenerator encomendaIdGenerator(){
         return new EncomendaIdGenerator();
+    }
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
 

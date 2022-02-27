@@ -24,10 +24,14 @@ public class Cliente implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
-    public Cliente(Integer id, String nome, String email) {
+    @JsonIgnore
+    private String senha;
+
+    public Cliente(Integer id, String nome, String email, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.senha = senha;
     }
 
     public Cliente(){}
@@ -43,6 +47,22 @@ public class Cliente implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public List<Encomenda> getEncomenda() {
+        return encomenda;
+    }
+
+    public void setEncomenda(List<Encomenda> encomenda) {
+        this.encomenda = encomenda;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public Integer getId() {
