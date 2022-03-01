@@ -8,4 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+
+    public Cliente findByEmail(String email);
 }

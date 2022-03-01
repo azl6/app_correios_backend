@@ -33,10 +33,6 @@ public class Config {
         return new EncomendaIdGenerator();
     }
 
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
 
 
 }
