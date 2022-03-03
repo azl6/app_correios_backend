@@ -1,7 +1,10 @@
 package com.alex.projeto_correios.controllers;
 
 import com.alex.projeto_correios.domain.Cliente;
+import com.alex.projeto_correios.domain.enums.Perfil;
+import com.alex.projeto_correios.security.UserSpringSecurity;
 import com.alex.projeto_correios.services.ClienteService;
+import com.alex.projeto_correios.utils.LoggedUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -24,7 +27,7 @@ public class ClienteController {
 
     return ResponseEntity.noContent().build();
     }
-    
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Cliente> findById(@PathVariable Integer id){
 

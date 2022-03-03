@@ -39,6 +39,10 @@ public class UserSpringSecurity implements UserDetails {
         return authorities;
     }
 
+    public boolean hasRole(Perfil perfil){
+        return getAuthorities().contains(new SimpleGrantedAuthority(perfil.getDescricao()));
+    }
+
     @Override
     public String getPassword() {
         return senha;
