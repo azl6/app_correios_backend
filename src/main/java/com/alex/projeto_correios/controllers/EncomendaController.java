@@ -9,6 +9,7 @@ import com.alex.projeto_correios.utils.CodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class EncomendaController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Encomenda>> findAll(){
 
@@ -48,6 +50,7 @@ public class EncomendaController {
 //        return ResponseEntity.ok().body(obj);
 //    }
 
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Encomenda> insert(@RequestBody Encomenda obj){
 
@@ -55,7 +58,8 @@ public class EncomendaController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    //arrumar
+
+    @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(method = RequestMethod.PUT, value = "/{id}")
     public ResponseEntity<Void> updateStatus(@PathVariable Integer id, @RequestBody String status){
 

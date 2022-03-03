@@ -65,6 +65,8 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 		Cliente alex = new Cliente(null, "Alex Silva Rodrigues", "alex.rodrigues23997@gmail.com", pe.encode("123"));
 		alex.addPerfil(Perfil.ADMIN);
 
+		Cliente bruna = new Cliente(null, "Bruna", "bruna@gmail.com", pe.encode("123"));
+
 		Endereco endereco1 = new Endereco(null, alex, mg.getNome(), itajuba.getNome(), "Centro", "Rua Nova", "399");
 		alex.setEnderecos(Arrays.asList(endereco1));
 
@@ -79,7 +81,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 
 		estadoRepository.saveAll(Arrays.asList(sp, mg));
 		cidadeRepository.saveAll(Arrays.asList(itajuba, campinas, cruzeiro));
-		clienteRepository.saveAll(Arrays.asList(alex));
+		clienteRepository.saveAll(Arrays.asList(alex, bruna));
 		enderecoRepository.saveAll(Arrays.asList(endereco1));
 		encomendaRepository.saveAll(Arrays.asList(encomenda1));
 
