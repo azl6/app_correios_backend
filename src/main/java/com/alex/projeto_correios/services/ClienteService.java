@@ -2,13 +2,14 @@ package com.alex.projeto_correios.services;
 
 import com.alex.projeto_correios.domain.Cliente;
 import com.alex.projeto_correios.domain.enums.Perfil;
+import com.alex.projeto_correios.exceptions.AccessDeniedException;
+import com.alex.projeto_correios.exceptions.ObjectNotFoundException;
 import com.alex.projeto_correios.repositories.ClienteRepository;
 import com.alex.projeto_correios.security.UserSpringSecurity;
 import com.alex.projeto_correios.utils.LoggedUserUtils;
 import com.alex.projeto_correios.utils.PasswordUtils;
-import org.hibernate.ObjectNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.AuthorizationServiceException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -35,13 +36,12 @@ public class ClienteService {
         UserSpringSecurity loggedUser = LoggedUserUtils.getAuthenticatedUser();
 
         if(loggedUser == null || !loggedUser.hasRole(Perfil.ADMIN) && !id.equals(loggedUser.getId())){
-            throw new AuthorizationServiceException("Acesso negado");
-
+            throw new AccessDeniedException("Acesso negado");
         }
 
         Optional<Cliente> obj = repo.findById(id);
 
-        return obj.orElseThrow(() -> new ObjectNotFoundException(1, "Não encontrado"));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
     public void delete(Cliente cli){
@@ -52,7 +52,7 @@ public class ClienteService {
         Cliente old = this.findById(id);
 
         if (old == null)
-            throw new ObjectNotFoundException(1, "Não encontrado");
+            throw new ObjectNotFoundException("Objeto não encontrado");
 
         new_cliente.setId(old.getId());
         return repo.save(new_cliente);

@@ -3,15 +3,12 @@ package com.alex.projeto_correios.services;
 import com.alex.projeto_correios.domain.Cliente;
 import com.alex.projeto_correios.domain.Encomenda;
 import com.alex.projeto_correios.domain.enums.Status;
-import com.alex.projeto_correios.repositories.ClienteRepository;
+import com.alex.projeto_correios.exceptions.ArgumentNotAcceptedException;
+import com.alex.projeto_correios.exceptions.ObjectNotFoundException;
 import com.alex.projeto_correios.repositories.EncomendaRepository;
-import com.alex.projeto_correios.utils.CodeGenerator;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -26,7 +23,7 @@ public class EncomendaService {
     public Encomenda findByCodigo(String codigo){
         Optional<Encomenda> obj = repo.findByCodigo(codigo);
 
-        return obj.orElseThrow(() -> new ObjectNotFoundException(1, "Não encontrado"));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
     public List<Encomenda> findAll(){
@@ -36,14 +33,14 @@ public class EncomendaService {
     public Encomenda findById(Integer id){
         Optional<Encomenda> obj = repo.findById(id);
 
-        return obj.orElseThrow(() -> new ObjectNotFoundException(1, "Não encontrado"));
+        return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
 
     public Encomenda insert(Encomenda obj){
         Optional<Encomenda> opt = repo.findByCodigo(obj.getCodigo());
 
         if(opt.isPresent())
-            throw new IllegalArgumentException("Código já existente na base de dados");
+            throw new ArgumentNotAcceptedException("Código já existente na base de dados");
         else
             return repo.save(obj);
     }
@@ -54,7 +51,7 @@ public class EncomendaService {
         Encomenda old = this.findById(id);
 
         if (old == null)
-            throw new ObjectNotFoundException(1, "Não encontrado");
+            throw new ObjectNotFoundException("Objeto não encontrado");
 
         switch (status){
             case "ENVIADO":
@@ -67,7 +64,7 @@ public class EncomendaService {
                 old.setStatus(Status.ENTREGUE);
                 break;
             default:
-                throw new IllegalArgumentException("Status não existente, Status: " + status);
+                throw new IllegalArgumentException("Status informado não existente");
         }
         return repo.save(old);
     }
