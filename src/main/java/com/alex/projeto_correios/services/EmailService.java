@@ -7,4 +7,5 @@ import org.springframework.mail.SimpleMailMessage;
 public interface EmailService {
     void sendStatusChangedEmail(Cliente cliente, Encomenda encomenda);
     void sendEmail(SimpleMailMessage msg);
+    void sendNewPasswordEmail(Cliente cliente);
 }
