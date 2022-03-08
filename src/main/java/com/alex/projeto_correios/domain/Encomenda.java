@@ -20,12 +20,12 @@ public class Encomenda implements Serializable {
         @ManyToOne
         @JoinColumn(name = "endereco_id")
         private Endereco enderecoDeEntrega;
+
         private Date dataDeEnvio;
         private Date previsaoDeEntrega;
-        //private String codigo;
-        private Status status = Status.PENDENTE_DE_ENVIO;
 
-        @JsonIgnore
+        private Status status = Status.PENDENTE_DE_ENVIO;
+        
         @ManyToOne
         @JoinColumn(name = "cliente_id")
         private Cliente cliente;

@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Locale;
 
 
 @SpringBootApplication
@@ -50,7 +51,7 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", new Locale("pt-BR", "BR"));
 
 		Estado sp = new Estado(null, "São Paulo");
 		Estado mg = new Estado(null, "Minas Gerais");

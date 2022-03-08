@@ -28,6 +28,7 @@ public class Cliente implements Serializable {
     @JsonIgnore
     private String senha;
 
+    @JsonIgnore
     @ElementCollection(fetch=FetchType.EAGER)
     @CollectionTable(name="PERFIS")
     private Set<Integer> perfis = new HashSet<>();
