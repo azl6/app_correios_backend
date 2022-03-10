@@ -25,7 +25,8 @@ public class Encomenda implements Serializable {
         private Date previsaoDeEntrega;
 
         private Status status = Status.PENDENTE_DE_ENVIO;
-        
+
+        @JsonIgnore
         @ManyToOne
         @JoinColumn(name = "cliente_id")
         private Cliente cliente;

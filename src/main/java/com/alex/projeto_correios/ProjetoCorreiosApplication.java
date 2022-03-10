@@ -76,18 +76,22 @@ public class ProjetoCorreiosApplication implements CommandLineRunner {
 				endereco1,
 				sdf.parse("22-01-2021"),
 				sdf.parse("30-01-2021"),
+				Status.ENTREGUE);
+
+		Encomenda encomenda2 = new Encomenda(
+				codeGenerator.newCode(),
+				endereco1,
+				sdf.parse("09-03-2022"),
+				sdf.parse("15-03-2022"),
 				Status.PENDENTE_DE_ENVIO);
 
 		encomenda1.setCliente(alex);
+		encomenda2.setCliente(alex);
 
 		estadoRepository.saveAll(Arrays.asList(sp, mg));
 		cidadeRepository.saveAll(Arrays.asList(itajuba, campinas, cruzeiro));
 		clienteRepository.saveAll(Arrays.asList(alex, bruna));
 		enderecoRepository.saveAll(Arrays.asList(endereco1));
-		encomendaRepository.saveAll(Arrays.asList(encomenda1));
-
-
-
-
+		encomendaRepository.saveAll(Arrays.asList(encomenda1, encomenda2));
 	}
 }

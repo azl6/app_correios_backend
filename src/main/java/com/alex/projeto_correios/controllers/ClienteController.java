@@ -28,10 +28,17 @@ public class ClienteController {
     return ResponseEntity.noContent().build();
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Cliente> findById(@PathVariable Integer id){
+//    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+//    public ResponseEntity<Cliente> findById(@PathVariable Integer id){
+//
+//        Cliente obj = service.findById(id);
+//        return ResponseEntity.ok().body(obj);
+//    }
 
-        Cliente obj = service.findById(id);
+    @RequestMapping(value = "/{email}", method = RequestMethod.GET)
+    public ResponseEntity<Cliente> findByEmail(@PathVariable String email){
+
+        Cliente obj = service.findByEmail(email);
         return ResponseEntity.ok().body(obj);
     }
 
