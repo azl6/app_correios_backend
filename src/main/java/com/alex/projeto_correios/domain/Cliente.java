@@ -24,7 +24,6 @@ public class Cliente implements Serializable {
     @OneToMany(mappedBy = "cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
-    @JsonIgnore
     private String senha;
 
     @JsonIgnore

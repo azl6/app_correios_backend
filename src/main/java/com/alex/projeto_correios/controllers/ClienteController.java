@@ -6,6 +6,7 @@ import com.alex.projeto_correios.security.UserSpringSecurity;
 import com.alex.projeto_correios.services.ClienteService;
 import com.alex.projeto_correios.utils.LoggedUserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +49,11 @@ public class ClienteController {
 
         List<Cliente> obj = service.findAll();
         return ResponseEntity.ok().body(obj);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/new")
+    public ResponseEntity<Void> insert(@RequestBody Cliente obj){
+        service.insert(obj);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

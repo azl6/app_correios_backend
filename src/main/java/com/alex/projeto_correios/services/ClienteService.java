@@ -76,4 +76,12 @@ public class ClienteService {
         obj.setSenha(pe.encode(obj.getSenha()));
         return repo.save(obj);
     }
+
+    public Cliente insert(Cliente cliente){
+        System.out.println(cliente.getNome());
+        System.out.println(cliente.getEmail());
+        System.out.println(cliente.getSenha());
+        cliente.setSenha(pe.encode(cliente.getSenha()));
+        return this.repo.save(cliente);
+    }
 }
