@@ -2,9 +2,9 @@
 
 >Status: Finished ✔️
 
-#### API build with Java, using many technologies, and serving as the backend for the following project: https://github.com/azold6/app_correios_frontend
+### API build with Java, using many technologies, and serving as the backend for the following project: https://github.com/azold6/app_correios_frontend
 
-#### Technologies used:
+### Technologies used:
 
 + Java and Spring Boot to build the API
 + Spring Data JPA
@@ -14,3 +14,6 @@
 + Hibernate
 + Authentication and Authorization with JWT Tokens
 + Swagger
+
+### Available endpoints:
+![endpoints](https://user-images.githubusercontent.com/80921933/159064749-17c96cf9-e760-4f1f-acd0-b41756cf0d41.png)
