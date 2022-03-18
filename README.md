@@ -16,4 +16,4 @@
 + Swagger
 
 ### Available endpoints:
-![endpoints](https://user-images.githubusercontent.com/80921933/159064749-17c96cf9-e760-4f1f-acd0-b41756cf0d41.png)
+![image](https://user-images.githubusercontent.com/80921933/159066452-2beccf49-df79-49fc-acea-aab5cc740ac7.png)
