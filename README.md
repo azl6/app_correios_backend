@@ -2,7 +2,7 @@
 
 >Status: Finished ✔️
 
-### API build with Java, using many technologies, and serving as the backend for the following project: https://github.com/azold6/app_correios_frontend
+### API built with Java, using many technologies, and serving as the backend for the following project: https://github.com/azold6/app_correios_frontend
 
 ### Technologies used:
 
